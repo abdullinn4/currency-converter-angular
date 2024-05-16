@@ -1,0 +1,25 @@
+<div>
+  <h1>Конвертер Валют</h1>
+  <form (ngSubmit)="convert()">
+    <div>
+      <label>Amount:</label>
+      <input type="number" [(ngModel)]="amount" name="amount" required>
+    </div>
+    <div>
+      <label>From:</label>
+      <select [(ngModel)]="fromCurrency" name="fromCurrency" required>
+        <option *ngFor="let currency of rates | keyvalue" [value]="currency.key">{{ currency.key }}</option>
+      </select>
+    </div>
+    <div>
+      <label>To:</label>
+      <select [(ngModel)]="toCurrency" name="toCurrency" required>
+        <option *ngFor="let currency of rates | keyvalue" [value]="currency.key">{{ currency.key }}</option>
+      </select>
+    </div>
+    <button type="submit">Convert</button>
+  </form>
+  <div *ngIf="result !== undefined">
+    <h2>Result: {{ result }}</h2>
+  </div>
+</div>
